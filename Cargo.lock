@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "todo-cli"
-version = "0.1.0"
+name = "td-cli"
+version = "0.2.0"

@@ -67,20 +67,21 @@ jobs:
         with:
           path: artifacts
 
-      - name: Rename binaries
+      - name: Collect binaries into dist/
         run: |
-          mv artifacts/td-cli-linux/td-cli        artifacts/td-cli-linux
-          mv artifacts/td-cli-macos/td-cli        artifacts/td-cli-macos
-          mv artifacts/td-cli-windows/td-cli.exe  artifacts/td-cli-windows.exe
+          mkdir dist
+          mv artifacts/td-cli-linux/td-cli        dist/td-cli-linux
+          mv artifacts/td-cli-macos/td-cli        dist/td-cli-macos
+          mv artifacts/td-cli-windows/td-cli.exe  dist/td-cli-windows.exe
 
       - name: Upload binaries to GitHub Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload "${{ needs.release-please.outputs.tag_name }}" \
-            artifacts/td-cli-linux \
-            artifacts/td-cli-macos \
-            artifacts/td-cli-windows.exe \
+            dist/td-cli-linux \
+            dist/td-cli-macos \
+            dist/td-cli-windows.exe \
             --repo "${{ github.repository }}"
 
   publish:
@@ -96,4 +97,4 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Publish
-        run: cargo publish --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: cargo publish --allow-dirty --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
