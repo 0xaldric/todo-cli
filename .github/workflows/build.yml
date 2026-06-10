@@ -1,9 +1,7 @@
-name: Release
+name: Build
 
 on:
   push:
-    branches:
-      - main
     tags:
       - "v*"
 
@@ -56,11 +54,11 @@ jobs:
 
       - name: Rename binaries
         run: |
-          mv artifacts/todo-linux/todo    artifacts/todo-linux
-          mv artifacts/todo-macos/todo    artifacts/todo-macos
+          mv artifacts/todo-linux/todo       artifacts/todo-linux
+          mv artifacts/todo-macos/todo       artifacts/todo-macos
           mv artifacts/todo-windows/todo.exe artifacts/todo-windows.exe
 
-      - name: Create GitHub Release
+      - name: Upload binaries to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
