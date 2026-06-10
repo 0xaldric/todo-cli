@@ -1,14 +1,14 @@
-# todo-cli
+# td-cli
 
 A simple command-line todo list manager written in Rust. Tasks are saved to `~/.todos.txt`.
 
 ## Usage
 
 ```bash
-todo add "Buy groceries"   # add a new task
-todo list                  # list all tasks
-todo done <id>             # mark a task as done
-todo remove <id>           # remove a task
+td-cli add "Buy groceries"   # add a new task
+td-cli list                  # list all tasks
+td-cli done <id>             # mark a task as done
+td-cli remove <id>           # remove a task
 ```
 
 ## Install
@@ -29,6 +29,8 @@ mv todo-linux /usr/local/bin/todo
 
 ```bash
 cargo install --git https://github.com/0xaldric/todo-cli
+# then run:
+td-cli list
 ```
 
 ## Build
