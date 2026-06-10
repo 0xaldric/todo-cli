@@ -2,5 +2,10 @@
 name = "todo"
 version = "0.1.0"
 edition = "2024"
+description = "A simple command-line todo list manager"
+license = "MIT"
+repository = "https://github.com/0xaldric/todo-cli"
+readme = "README.md"
+keywords = ["todo", "cli", "task"]
 
 [dependencies]
